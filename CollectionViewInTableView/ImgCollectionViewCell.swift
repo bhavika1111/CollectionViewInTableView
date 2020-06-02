@@ -26,9 +26,13 @@ class ImgCollectionViewCell: UICollectionViewCell {
         self.imgText.text = label
     }
     
+    func resetCellState() {
+        self.imgText.text = nil
+    }
    
-    
-    
+    func getLabel() -> String? {
+         self.imgText.text
+    }
     
    /*
      func displayImage(_ movieImage:MovieData) {
