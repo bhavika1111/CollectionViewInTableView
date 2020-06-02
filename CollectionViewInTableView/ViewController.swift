@@ -15,16 +15,20 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var imageCell = ImageTableViewCell()
 //    var movieList = [MovieData]()
     
-    let dataArray = [ ["0", "1", "2", "3", "5", "6", "7", "8", "9"], ["3", "4", "5", "9", "10", "11", "12", "12", "13"], ["6", "7", "8"]]
+    var dataArray: [[String]] = []
    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        tableView.dataSource = self
-        tableView.delegate = self
+      tableView.dataSource = self
+      tableView.delegate = self
         
+        retrieveData { (dataArray) in
+            self.dataArray = dataArray
+            self.tableView.reloadData()
+        }
 //        imageCell.delegate = self
 //        imageCell.getDetalMovieList()
     }
@@ -49,6 +53,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 122
+    }
+    
+    func retrieveData(completion: @escaping ([[String]]) -> Void) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+            let data = [ ["0", "1", "2", "3", "5", "6", "7", "8", "9"], ["3", "4", "5", "9", "10", "11", "12", "12", "13"], ["6", "7", "8"], ["5", "6", "7", "8", "9"], ["3", "5", "9", "12", "13"], ["7", "8"], ["0", "1"], ["12", "13"], ["6"]]
+            completion(data)
+        }
     }
 
     /*

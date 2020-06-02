@@ -27,15 +27,11 @@ class ImageTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollect
         collectionView.dataSource = self
         collectionView.delegate = self
     }
-    
+
     func getData(data: [String]) {
         self.data = data
     }
 
-//    func numberOfSections(in collectionView: UICollectionView) -> Int {
-//        return data!.count
-//    }
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return data!.count
     }
